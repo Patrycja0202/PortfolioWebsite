@@ -15,25 +15,36 @@ export default async function ProjectsPage({ params }: { params: { locale: strin
       title: t('project1Title'),
       description: t('project1Desc'),
       tags: ['AI Apps', 'Automation'],
-      icon: '🤖',
+      image: '/screenshots/ai-onboarding/n8n-workflow.png',
+      slug: 'ai-onboarding',
     },
     {
       title: t('project2Title'),
       description: t('project2Desc'),
       tags: ['BPMN'],
-      icon: '📊',
-    },
-    {
-      title: t('project3Title'),
-      description: t('project3Desc'),
-      tags: ['Web Dev'],
-      icon: '🌐',
+      image: '/screenshots/bpmn/analysis.png',
+      slug: 'bpmn-logistyka',
     },
     {
       title: t('project4Title'),
       description: t('project4Desc'),
       tags: ['Automation'],
-      icon: '⚙️',
+      image: '/screenshots/make-reporting/dashboard.png',
+      slug: 'make-reporting',
+    },
+    {
+      title: t('project5Title'),
+      description: t('project5Desc'),
+      tags: ['Web Dev'],
+      image: '/screenshots/stork/hero.png',
+      slug: 'stork',
+    },
+    {
+      title: t('project6Title'),
+      description: t('project6Desc'),
+      tags: ['Web Dev'],
+      image: '/screenshots/craft-cafe/hero.png',
+      slug: 'craft-cafe',
     },
   ];
 
@@ -49,6 +60,7 @@ export default async function ProjectsPage({ params }: { params: { locale: strin
     <ProjectsClient
       pageTitle={t('pageTitle')}
       seeMoreLabel={t('seeMore')}
+      visitProjectLabel={t('visitProject')}
       filterLabels={filterLabels}
       projects={projects}
       locale={params.locale}

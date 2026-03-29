@@ -124,6 +124,74 @@
     "project3Desc": "Responsywna strona zbudowana w Next.js z obsługą 3 języków i optymalizacją SEO.",
     "project4Title": "Automatyzacja raportowania w Make.com",
     "project4Desc": "System automatycznego generowania raportów z różnych źródeł danych i wysyłania ich do zespołu.",
+    "project5Title": "Stork – strona firmy remontowej",
+    "project5Desc": "Elegancka strona internetowa dla firmy wykończeniowej z Krakowa. Ciemny motyw premium, galeria realizacji z filtrowaniem, kalkulator wyceny oraz formularz kontaktowy. Zbudowana w czystym HTML/CSS/JS.",
+    "project6Title": "Craft Café – Kazimierz, Kraków",
+    "project6Desc": "Klimatyczna strona internetowa dla kawiarni na Kazimierzu. Rezerwacja stolików online, zapisy na warsztaty ceramiczne i kalendarz wydarzeń. Estetyka spójna z charakterem miejsca.",
+    "visitProject": "Zobacz projekt",
+    "openWebsite": "Otwórz stronę →",
+    "projectDetail": {
+      "make-reporting": {
+        "overview": "Firma z branży e-commerce generowała raporty ręcznie — analityk eksportował dane z kilku systemów (Google Sheets, Xero, Airtable, WMS), składał je w Excelu i rozsyłał e-mailem co tydzień. Cały proces zajmował 4–6 godzin tygodniowo i był podatny na błędy. Zaprojektowałam i wdrożyłam system automatycznego raportowania w Make.com, który pobiera dane z 5 źródeł, przetwarza je i dostarcza raporty do odpowiednich odbiorców — bez żadnej interwencji ludzkiej.",
+        "processTitle": "Jak zbudowałam system raportowania",
+        "process": [
+          "Audyt procesu — zmapowałam wszystkie źródła danych, harmonogram raportów (dzienne, tygodniowe, miesięczne) oraz listę odbiorców i formatów (PDF, XLSX, Slack, Notion).",
+          "Architektura Make.com — zaprojektowałam 4 niezależne scenariusze: raport dzienny sprzedaży, tygodniowy raport finansowy, dashboard KPI ops oraz alert stanów magazynowych.",
+          "Integracje danych — połączenia z Google Sheets (sprzedaż), Xero (finanse), Airtable (operacje), WMS API (magazyn), HubSpot CRM (pipeline).",
+          "Formatowanie i dystrybucja — automatyczne generowanie PDF i XLSX, wysyłka do skrzynek e-mail zarządu, publikacja live dashboardu w Notion, powiadomienia Slack do odpowiednich kanałów.",
+          "Monitoring i alerty — automatyczne powiadomienia przy błędach połączenia, retry logic, logi wykonania i miesięczny raport health-check systemu."
+        ],
+        "result": "4–6 godzin pracy tygodniowo → 0 minut. 12 raportów generowanych automatycznie co miesiąc. Czas dostarczenia raportu skrócony z 48 godzin do 8 minut. Błędy w danych zredukowane o 94% dzięki walidacji na wejściu."
+      },
+      "bpmn-logistyka": {
+        "overview": "LogiFlow Sp. z o.o. — firma logistyczna obsługująca 400+ zamówień dziennie — zmagała się z chaotycznym, w pełni manualnym procesem realizacji zamówień. Zamówienia spływały telefonicznie i e-mailem, weryfikacja kredytowa zajmowała 2 dni, kompletacja towarów generowała 8% błędów, a faktury wystawiano ręcznie po 48 godzinach. Przeprowadziłam pełną analizę procesów BPMN i wdrożyłam 9 automatyzacji.",
+        "processTitle": "Metodologia i przebieg projektu",
+        "process": [
+          "Faza 1 – Mapowanie AS-IS (2 tyg.): 12 wywiadów z pracownikami (sprzedaż, magazyn, logistyka, finanse), obserwacja procesów i mapowanie stanu obecnego w BPMN 2.0 w Visio Professional z zaznaczeniem 5 krytycznych wąskich gardeł.",
+          "Faza 2 – Analiza i priorytetyzacja (1 tyg.): Analiza czasowo-kosztowa każdego kroku (czas, koszt, błędy), macierz priorytetów wg ROI i trudności wdrożenia, warsztaty z kadrą zarządzającą.",
+          "Faza 3 – Projekt TO-BE (1 tyg.): Diagram zoptymalizowanego procesu z 9 automatyzacjami — portal B2B, auto-weryfikacja BIK API (3 sek.), WMS auto-alokacja, AI Route Planner, e-POD mobilny, auto-faktura.",
+          "Faza 4 – Wdrożenie iteracyjne (3 sprinty × 2 tyg.): Implementacja automatyzacji w kolejności wg ROI, testy równoległe (nowy vs stary proces), szkolenia pracowników.",
+          "Faza 5 – Monitoring i raport: Dashboard analityczny z metrykami, weryfikacja wyników po 30 dniach."
+        ],
+        "result": "Czas realizacji zamówienia: 3.2 dnia → 4.5 godziny (↓94%). Błędy kompletacji: 8.2% → 0.3% (↓96%). 312 roboczogodzin oszczędności miesięcznie (≈€9,360). ROI projektu: 8 miesięcy. Pełne wyeliminowanie papierowego obiegu dokumentów."
+      },
+      "ai-onboarding": {
+        "overview": "Agencja SaaS obsługująca kilkudziesięciu klientów miesięcznie traciła średnio 17 minut na ręczne onboardowanie każdego nowego klienta — wysyłanie e-maili, tworzenie zadań w Notion, aktualizację CRM i powiadamianie zespołu przez Slack. Zbudowałam w pełni zautomatyzowany przepływ oparty na n8n i Claude API, który wykonuje ten cały proces w 3–4 sekundy.",
+        "processTitle": "Jak zbudowałam automatyzację",
+        "process": [
+          "Audyt procesu — zmapowałam każdy krok manualnego onboardingu i zidentyfikowałam wąskie gardła (błędy copy-paste, opóźnienia, brak spójności e-maili).",
+          "Projekt workflow w n8n — Webhook trigger → walidacja danych → sprawdzenie CRM (HubSpot) → Claude AI → równoległe akcje wyjściowe.",
+          "Prompt engineering dla Claude — zaprojektowałam systemowy prompt, który na podstawie danych klienta generuje spersonalizowany e-mail powitalny (PL/EN), listę 12 zadań onboardingowych i notatkę do CRM.",
+          "Integracje — Gmail/SendGrid (e-mail), Notion (zadania), HubSpot (deal stage → 'Onboarded'), Slack (powiadomienie do kanału #onboarding).",
+          "Testy i monitoring — wdrożenie dashboardu analitycznego, automatyczne alerty przy błędach, retries dla nieudanych węzłów."
+        ],
+        "result": "Czas onboardingu skrócony z 17 minut do 3,4 sekundy — redukcja o 80%. Agencja obsłużyła 127 klientów w pierwszym miesiącu bez żadnej interwencji manualnej. Oszczędność: ~312 roboczogodzin miesięcznie."
+      },
+      "stork": {
+        "overview": "Stork Wykończenia to krakowska firma specjalizująca się w wykończeniach mieszkań i domów — od łazienek, przez salony, po tarasy i przestrzenie biurowe. Klient zgłosił się z potrzebą stworzenia eleganckiej, profesjonalnej strony, która odzwierciedli premium charakter jego usług i pozwoli klientom od razu oszacować koszt remontu.",
+        "processTitle": "Jak powstawała strona",
+        "process": [
+          "Rozmowa z klientem — zebranie wymagań, omówienie zakresu usług i grupy docelowej.",
+          "Projekt wizualny: ciemny motyw premium, złote akcenty, elegancka typografia z charakterem.",
+          "Budowa sekcji: hero ze statystykami, o firmie, usługi, galeria realizacji z filtrowaniem kategorii (łazienki, salony, tarasy, biura), opinie klientów, cennik i kontakt.",
+          "Interaktywny kalkulator kosztów remontu — klient dobiera metraż, liczbę pomieszczeń, standard wykończenia i typ mieszkania, a strona wylicza szacunkowy koszt w czasie rzeczywistym.",
+          "Animacje wejścia, pełna responsywność i przekazanie gotowej strony klientowi."
+        ],
+        "result": "Strona gotowa w 2 dni. Klient otrzymał nowoczesną, szybką i elegancką wizytówkę online z wbudowanym kalkulatorem wyceny — narzędziem, które realnie pomaga pozyskiwać zapytania."
+      },
+      "craft-cafe": {
+        "overview": "Craft Café to wyjątkowa kawiarnia na krakowskim Kazimierzu, łącząca pyszną kawę z warsztatami ceramicznymi i lokalnymi wydarzeniami. Klientka potrzebowała strony, która odda klimat miejsca, umożliwi rezerwację stolików online oraz zapisy na warsztaty.",
+        "processTitle": "Jak powstawała strona",
+        "process": [
+          "Spotkanie z klientką — omówienie charakteru kawiarni, jej wartości, estetyki i potrzeb funkcjonalnych.",
+          "Projekt wizualny inspirowany Kazimierzem: ciepłe tony, organiczne kształty, elegancka typografia.",
+          "Budowa sekcji: hero, o kawiarni, menu, warsztaty ceramiczne z zapisami, kalendarz wydarzeń i rezerwacja stolika.",
+          "Integracja interaktywnego kalendarza i formularza rezerwacji bez zewnętrznych serwisów.",
+          "Testy na różnych urządzeniach i finalne przekazanie strony."
+        ],
+        "result": "Strona odzwierciedla unikalny charakter Craft Café i umożliwia klientom łatwe rezerwowanie stolików oraz zapisywanie się na warsztaty — wszystko w jednym miejscu."
+      }
+    },
     "metaTitle": "Projekty – Analytica Studio",
     "metaDesc": "Wybrane projekty z zakresu automatyzacji, aplikacji AI i stron internetowych."
   },

@@ -8,6 +8,9 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
+  icon?: string;
+  image?: string;
+  slug?: string;
 }
 
 type FilterKey = 'All' | 'AI Apps' | 'Automation' | 'Web Dev' | 'BPMN';
@@ -15,6 +18,7 @@ type FilterKey = 'All' | 'AI Apps' | 'Automation' | 'Web Dev' | 'BPMN';
 interface Props {
   pageTitle: string;
   seeMoreLabel: string;
+  visitProjectLabel: string;
   filterLabels: Record<FilterKey, string>;
   projects: Project[];
   locale: string;
@@ -61,7 +65,7 @@ function ProjectIcon({ tags }: { tags: string[] }) {
   );
 }
 
-export default function ProjectsClient({ pageTitle, seeMoreLabel, filterLabels, projects, locale }: Props) {
+export default function ProjectsClient({ pageTitle, seeMoreLabel, visitProjectLabel, filterLabels, projects, locale }: Props) {
   const [activeFilter, setActiveFilter] = useState<FilterKey>('All');
   const prefix = locale === 'en' ? '' : `/${locale}`;
 
@@ -105,8 +109,12 @@ export default function ProjectsClient({ pageTitle, seeMoreLabel, filterLabels, 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {filtered.map((project, i) => (
           <BentoCard key={i} delay={i * 0.1}>
-            <div className="aspect-video bg-gradient-to-br from-[#C9B8F0]/20 to-[#C8E6C9]/20 rounded-2xl mb-4 flex items-center justify-center">
-              <ProjectIcon tags={project.tags} />
+            <div className="aspect-video rounded-2xl mb-4 overflow-hidden bg-gradient-to-br from-[#C9B8F0]/20 to-[#C8E6C9]/20 flex items-center justify-center">
+              {project.image ? (
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+              ) : (
+                <ProjectIcon tags={project.tags} />
+              )}
             </div>
             <h2 className="text-xl font-bold mb-2 text-[#1A1A1A]">{project.title}</h2>
             <p className="text-sm mb-4 text-[#888] leading-relaxed">{project.description}</p>
@@ -118,7 +126,7 @@ export default function ProjectsClient({ pageTitle, seeMoreLabel, filterLabels, 
               ))}
             </div>
             <Link
-              href={`${prefix}/kontakt`}
+              href={project.slug ? `${prefix}/projekty/${project.slug}` : `${prefix}/kontakt`}
               className="inline-flex items-center gap-2 text-sm font-medium text-[#1A1A1A] group"
             >
               {seeMoreLabel}

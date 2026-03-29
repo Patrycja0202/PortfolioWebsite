@@ -124,6 +124,74 @@
     "project3Desc": "Responsivt nettsted bygget i Next.js med støtte for 3 språk og SEO-optimalisering.",
     "project4Title": "Rapporteringsautomatisering i Make.com",
     "project4Desc": "System for automatisk generering av rapporter fra ulike datakilder og sending til team.",
+    "project5Title": "Stork – nettsted for renoveringsfirma",
+    "project5Desc": "Elegant nettsted for et finish- og renoveringsfirma i Kraków. Mørkt premium-tema, filtrerbart prosjektgalleri, priskalkulator og kontaktskjema. Bygget i ren HTML/CSS/JS.",
+    "project6Title": "Craft Café – Kazimierz, Kraków",
+    "project6Desc": "Atmosfærisk nettsted for en kafé i Kazimierz-bydelen. Online bordreservasjoner, påmeldinger til keramikkverksteder og arrangementskalender. Estetikk i tråd med stedets karakter.",
+    "visitProject": "Se prosjekt",
+    "openWebsite": "Åpne nettsted →",
+    "projectDetail": {
+      "make-reporting": {
+        "overview": "Et e-handelsselskap genererte rapporter manuelt — en analytiker eksporterte data fra flere systemer (Google Sheets, Xero, Airtable, WMS), slo dem sammen i Excel og sendte dem på e-post hver uke. Prosessen tok 4–6 timer i uken og var utsatt for feil. Jeg designet og implementerte et automatisert rapporteringssystem i Make.com som henter data fra 5 kilder, behandler dem og leverer rapporter til riktige mottakere — uten menneskelig inngripen.",
+        "processTitle": "Slik bygde jeg rapporteringssystemet",
+        "process": [
+          "Prosessgjennomgang — kartla alle datakilder, rapportplan (daglig, ukentlig, månedlig) og full liste over mottakere og formater (PDF, XLSX, Slack, Notion).",
+          "Make.com-arkitektur — designet 4 uavhengige scenarioer: daglig salgsrapport, ukentlig finanssammendrag, ops KPI-dashboard og lagervarsel.",
+          "Dataintegrsjoner — tilkoblinger til Google Sheets (salg), Xero (økonomi), Airtable (operasjoner), WMS API (lager) og HubSpot CRM (pipeline).",
+          "Formatering og distribusjon — automatisk generering av PDF og XLSX, levering til ledelsens innbokser, live dashboard publisert til Notion, Slack-varsler til relevante kanaler.",
+          "Overvåking og varsler — automatiske varsler ved tilkoblingsfeil, retry-logikk, kjøringslogger og månedlig systemhelserapport."
+        ],
+        "result": "4–6 timers manuelt arbeid per uke → 0 minutter. 12 rapporter generert automatisk hver måned. Rapportleveringstid kuttet fra 48 timer til 8 minutter. Datafeil redusert med 94% takket være inndatavalidering."
+      },
+      "bpmn-logistyka": {
+        "overview": "LogiFlow Sp. z o.o. — et logistikkselskap som håndterer 400+ ordre daglig — slet med en kaotisk, fullstendig manuell ordreprosess. Bestillinger kom inn via telefon og e-post, kredittvurdering tok 2 dager, lagerplukking hadde 8% feilrate, og fakturaer ble utstedt manuelt etter 48 timer. Jeg gjennomførte en fullstendig BPMN-prosessanalyse og implementerte 9 automatiseringer.",
+        "processTitle": "Metodikk og prosjektforløp",
+        "process": [
+          "Fase 1 – AS-IS kartlegging (2 uker): 12 intervjuer med ansatte (salg, lager, logistikk, økonomi), prosessobservasjon og nåstandskartlegging i BPMN 2.0 i Visio Professional, med 5 kritiske flaskehalser identifisert.",
+          "Fase 2 – Analyse og prioritering (1 uke): Tid-kostnad-analyse av hvert steg, ROI-vanskelighetsmatrise, workshops med ledelsen.",
+          "Fase 3 – TO-BE-design (1 uke): Optimalisert prosessdiagram med 9 automatiseringer — B2B-portal, automatisk kredittsjekk via API (3 sek), WMS auto-allokering, AI ruteplanlegger, mobil e-POD, automatisk fakturering.",
+          "Fase 4 – Iterativ implementering (3 sprinter × 2 uker): Automatiseringer rullet ut etter ROI-rekkefølge, parallell testing, opplæring av ansatte.",
+          "Fase 5 – Overvåking og rapport: Analysedashboard med KPI-er, 30-dagers resultatgjennomgang."
+        ],
+        "result": "Ordrebehandlingstid: 3,2 dager → 4,5 timer (↓94%). Plukkefeil: 8,2% → 0,3% (↓96%). 312 arbeidstimer spart per måned (≈€9 360). Prosjekt-ROI: 8 måneder. Full eliminering av papirbasert dokumentflyt."
+      },
+      "ai-onboarding": {
+        "overview": "Et SaaS-byrå som onboardet dusinvis av nye kunder hver måned brukte i gjennomsnitt 17 minutter per kunde på manuelle oppgaver — skrive velkomst-e-poster, opprette Notion-oppgavelister, oppdatere CRM og varsle teamet på Slack. Jeg bygde en fullautomatisert pipeline med n8n og Claude API som fullfører hele prosessen på 3–4 sekunder.",
+        "processTitle": "Slik bygde jeg automatiseringen",
+        "process": [
+          "Prosessgjennomgang — kartla hvert steg i den manuelle onboarding-flyten og identifiserte flaskehalser: copy-paste-feil, ukonsekvente e-poster og forsinkelser.",
+          "Workflow-design i n8n — Webhook trigger → datavalidering → CRM-sjekk (HubSpot) → Claude AI → parallelle utganger.",
+          "Prompt engineering for Claude — designet en systemprompt som genererer personlig velkomst-e-post (PL/EN), 12 onboarding-oppgaver og CRM-notat fra rådata.",
+          "Integrasjoner — Gmail/SendGrid (e-post), Notion (oppgaver), HubSpot (deal stage → 'Onboarded'), Slack (varsling til #onboarding).",
+          "Testing og overvåking — analysedashboard, automatiske feilarsel og retry-logikk for mislykkede noder."
+        ],
+        "result": "Onboarding-tid redusert fra 17 minutter til 3,4 sekunder — en reduksjon på 80%. Byrået håndterte 127 kunder den første måneden uten manuell inngripen. Besparelse: ~312 arbeidstimer per måned."
+      },
+      "stork": {
+        "overview": "Stork Wykończenia er et Kraków-basert firma som spesialiserer seg på boligoppussing — fra bad og stuer til terrasser og kontorrom. Klienten ønsket en elegant, profesjonell nettside som gjenspeiler den premium kvaliteten på tjenestene og lar potensielle kunder estimere oppussingskostnader med en gang.",
+        "processTitle": "Slik ble nettstedet laget",
+        "process": [
+          "Klientmøte — mål, målgruppe, visuell stil og tjenestenes omfang.",
+          "Visuelt konsept: mørkt premium-tema, gullaksenter, karakterfull typografi.",
+          "Seksjoner: hero med statistikker, om oss, tjenester, filtrerbart galleri (bad, stuer, terrasser, kontorer), anmeldelser, prisliste og kontakt.",
+          "Interaktiv kostnadskalkulator — klienter velger areal, antall rom, standard og eiendomstype; siden beregner estimert kostnad i sanntid.",
+          "Rulleanimasjoner, full mobiltilpasning og levering."
+        ],
+        "result": "Nettstedet ferdigstilt på 2 dager. Klienten fikk en moderne, rask og elegant nettside med innebygd kalkulator — et verktøy som aktivt hjelper ham å generere nye henvendelser."
+      },
+      "craft-cafe": {
+        "overview": "Craft Café er en unik kafé i Kazimierz-bydelen i Kraków, som kombinerer god kaffe med keramikkverksteder og lokale arrangementer. Klienten trengte en nettside som fanger stemningen på stedet og muliggjør bordreservasjoner og verkstedpåmeldinger.",
+        "processTitle": "Slik ble nettstedet laget",
+        "process": [
+          "Møte med klienten — kaféens karakter, verdier, estetikk og funksjonelle behov.",
+          "Visuelt design inspirert av Kazimierz: varme toner, organiske former, elegant typografi.",
+          "Seksjoner: hero, om oss, meny, keramikkverksteder med påmelding, arrangementskalender og bordreservasjon.",
+          "Interaktiv kalender og reservasjonsskjema uten tredjepartstjenester.",
+          "Testing på ulike enheter og endelig levering."
+        ],
+        "result": "Nettstedet gjenspeiler Craft Cafés unike karakter og lar kundene enkelt bestille bord og melde seg på verksteder — alt på ett sted."
+      }
+    },
     "metaTitle": "Prosjekter – Analytica Studio",
     "metaDesc": "Utvalgte prosjekter innen automatisering, AI-applikasjoner og webutvikling."
   },

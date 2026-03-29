@@ -124,6 +124,74 @@
     "project3Desc": "Responsive website built in Next.js with support for 3 languages and SEO optimization.",
     "project4Title": "Reporting automation in Make.com",
     "project4Desc": "System for automatic report generation from various data sources and sending to team.",
+    "project5Title": "Stork – renovation company website",
+    "project5Desc": "Elegant website for a finishing & renovation company in Kraków. Dark premium theme, filterable project gallery, pricing calculator and contact form. Built in pure HTML/CSS/JS.",
+    "project6Title": "Craft Café – Kazimierz, Kraków",
+    "project6Desc": "Atmospheric website for a café in Kazimierz district. Online table reservations, sign-ups for ceramics workshops and an events calendar. Aesthetic fully aligned with the venue's character.",
+    "visitProject": "View project",
+    "openWebsite": "Open website →",
+    "projectDetail": {
+      "make-reporting": {
+        "overview": "An e-commerce company was generating reports manually — an analyst would export data from several systems (Google Sheets, Xero, Airtable, WMS), merge them in Excel and send them by email each week. The process took 4–6 hours per week and was prone to errors. I designed and implemented an automated reporting system in Make.com that pulls data from 5 sources, processes it and delivers reports to the right recipients — with zero human intervention.",
+        "processTitle": "How I built the reporting system",
+        "process": [
+          "Process audit — mapped all data sources, report schedule (daily, weekly, monthly) and the full list of recipients and output formats (PDF, XLSX, Slack, Notion).",
+          "Make.com architecture — designed 4 independent scenarios: daily sales report, weekly finance summary, ops KPI dashboard and inventory alert.",
+          "Data integrations — connections to Google Sheets (sales), Xero (finance), Airtable (operations), WMS API (warehouse) and HubSpot CRM (pipeline).",
+          "Formatting & distribution — automatic PDF and XLSX generation, delivery to management inboxes, live dashboard published to Notion, Slack notifications to the relevant channels.",
+          "Monitoring & alerts — automatic notifications on connection errors, retry logic, execution logs and a monthly system health-check report."
+        ],
+        "result": "4–6 hours of manual work per week → 0 minutes. 12 reports generated automatically every month. Report delivery time cut from 48 hours to 8 minutes. Data errors reduced by 94% thanks to input validation."
+      },
+      "bpmn-logistyka": {
+        "overview": "LogiFlow Sp. z o.o. — a logistics company handling 400+ orders per day — was struggling with a chaotic, fully manual order fulfilment process. Orders arrived by phone and email, credit checks took 2 days, warehouse picking had an 8% error rate, and invoices were issued manually after 48 hours. I conducted a full BPMN process analysis and implemented 9 automations.",
+        "processTitle": "Methodology and project timeline",
+        "process": [
+          "Phase 1 – AS-IS mapping (2 wks): 12 interviews with employees (sales, warehouse, logistics, finance), process observation and current-state mapping in BPMN 2.0 using Visio Professional, identifying 5 critical bottlenecks.",
+          "Phase 2 – Analysis & prioritisation (1 wk): Time-cost analysis of each step, ROI-difficulty prioritisation matrix, workshops with management.",
+          "Phase 3 – TO-BE design (1 wk): Optimised process diagram with 9 automations — B2B portal, auto credit check via BIK API (3 sec), WMS auto-allocation, AI Route Planner, mobile e-POD, auto-invoicing.",
+          "Phase 4 – Iterative implementation (3 sprints × 2 wks): Automations rolled out in ROI order, parallel testing (new vs old process), employee training.",
+          "Phase 5 – Monitoring & report: Analytics dashboard with KPIs, 30-day results review."
+        ],
+        "result": "Order fulfilment time: 3.2 days → 4.5 hours (↓94%). Picking errors: 8.2% → 0.3% (↓96%). 312 working hours saved per month (≈€9,360). Project ROI: 8 months. Full elimination of paper-based document flow."
+      },
+      "ai-onboarding": {
+        "overview": "A SaaS agency onboarding dozens of new clients every month was spending an average of 17 minutes per client on manual tasks — writing welcome emails, creating Notion task lists, updating the CRM and notifying the team on Slack. I built a fully automated pipeline using n8n and the Claude API that completes the entire process in 3–4 seconds.",
+        "processTitle": "How I built the automation",
+        "process": [
+          "Process audit — mapped every step of the manual onboarding flow and identified bottlenecks: copy-paste errors, inconsistent emails, delays between steps.",
+          "Workflow design in n8n — Webhook trigger → data validation → CRM check (HubSpot) → Claude AI → parallel output actions.",
+          "Prompt engineering for Claude — designed a system prompt that generates a personalised welcome email (PL/EN), a 12-item onboarding task list and a CRM note from raw client data.",
+          "Integrations — Gmail/SendGrid (email), Notion (tasks), HubSpot (deal stage → 'Onboarded'), Slack (notification to #onboarding channel).",
+          "Testing & monitoring — analytics dashboard, automatic error alerts and retry logic for failed nodes."
+        ],
+        "result": "Onboarding time reduced from 17 minutes to 3.4 seconds — an 80% reduction. The agency handled 127 clients in the first month with zero manual intervention. Savings: ~312 working hours per month."
+      },
+      "stork": {
+        "overview": "Stork Wykończenia is a Kraków-based company specialising in apartment and house finishing — from bathrooms, through living rooms, to terraces and office spaces. The client needed an elegant, professional website that reflects the premium nature of his services and lets potential clients instantly estimate renovation costs.",
+        "processTitle": "How the website was built",
+        "process": [
+          "Client discovery call — goals, target audience, visual style and scope of services.",
+          "Visual concept: dark premium theme, gold accents, characterful typography.",
+          "Sections built: hero with stats, about, services, filterable project gallery (bathrooms, living rooms, terraces, offices), reviews, pricing and contact.",
+          "Interactive renovation cost calculator — clients choose floor area, number of rooms, finishing standard and property type; the page calculates the estimated cost in real time.",
+          "Scroll animations, full mobile responsiveness and final delivery."
+        ],
+        "result": "Website completed in 2 days. The client received a modern, fast and elegant online presence with a built-in quote calculator — a tool that actively helps him generate new enquiries."
+      },
+      "craft-cafe": {
+        "overview": "Craft Café is a unique café in Kraków's Kazimierz district, combining great coffee with ceramics workshops and local events. The client needed a website that captures the atmosphere of the place, enables online table reservations and workshop sign-ups.",
+        "processTitle": "How the website was built",
+        "process": [
+          "Meeting with the client — discussing the café's character, values, aesthetic and functional needs.",
+          "Visual design inspired by Kazimierz: warm tones, organic shapes, elegant typography.",
+          "Sections built: hero, about, menu, ceramics workshops with sign-ups, events calendar and table reservation.",
+          "Interactive calendar and reservation form — no third-party services.",
+          "Cross-device testing and final delivery."
+        ],
+        "result": "The website reflects the unique character of Craft Café and allows customers to easily book tables and sign up for workshops — all in one place."
+      }
+    },
     "metaTitle": "Projects – Analytica Studio",
     "metaDesc": "Selected projects in automation, AI applications, and web development."
   },
