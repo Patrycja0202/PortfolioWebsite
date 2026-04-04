@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 const certs = [
   { name: 'CPRE – Requirements Engineering', meta: 'IREB · Jan 2025' },
   { name: 'Professional Scrum Master PSM1', meta: 'Scrum.org · Apr 2024' },
+  { name: 'Google UX Design', meta: 'Google · Coursera' },
   { name: 'Clinical Data Modelling', meta: 'Better · Mar 2026' },
   { name: 'openEHR Technical Course', meta: 'Better · Feb 2026' },
   { name: 'UX Design Fundamentals', meta: 'IBM · May 2024' },
