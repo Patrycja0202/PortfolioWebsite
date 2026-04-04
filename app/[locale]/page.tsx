@@ -31,9 +31,10 @@ export default async function HomePage({ params }: { params: { locale: string } 
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Patrycja Żurawska',
-    jobTitle: 'AI Product Builder & System Analyst',
-    url: 'https://analyticastudio.pl',
-    sameAs: ['https://linkedin.com/in/patrycja-zurawska'],
+    jobTitle: 'AI Product Consultant',
+    url: 'https://analytica-studio.com',
+    sameAs: ['https://github.com/Patrycja0202'],
+    knowsAbout: ['Claude API', 'AI Product Development', 'Business Analysis', 'Process Automation'],
     address: { '@type': 'PostalAddress', addressLocality: 'Kraków', addressCountry: 'PL' },
     worksFor: { '@type': 'Organization', name: 'Analytica Studio' },
   };

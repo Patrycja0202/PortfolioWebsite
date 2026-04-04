@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = 'https://analyticastudio.pl';
+const baseUrl = 'https://analytica-studio.com';
+// '' = English (no prefix, default locale), '/pl' = Polish, '/no' = Norwegian
 const locales = ['', '/pl', '/no'];
-const paths = ['', '/o-mnie', '/projekty', '/oferta', '/cennik', '/kontakt'];
+const paths = ['', '/projekty', '/o-mnie', '/kontakt', '/oferta', '/cennik'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

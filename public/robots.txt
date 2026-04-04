@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://analytica-studio.com/sitemap.xml
