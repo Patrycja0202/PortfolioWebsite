@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Brain, Bot, Globe, Globe2, Settings, ClipboardList, BookOpen } from 'lucide-react';
 import BentoCard from '@/components/BentoCard';
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -48,16 +49,16 @@ export default async function AboutPage({ params }: { params: { locale: string }
   const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
 
   const pillars = [
-    { emoji: '🧠', title: t('pillar1Title'), desc: t('pillar1Desc') },
-    { emoji: '🤖', title: t('pillar2Title'), desc: t('pillar2Desc') },
-    { emoji: '🌍', title: t('pillar3Title'), desc: t('pillar3Desc') },
+    { icon: Brain, title: t('pillar1Title'), desc: t('pillar1Desc') },
+    { icon: Bot, title: t('pillar2Title'), desc: t('pillar2Desc') },
+    { icon: Globe, title: t('pillar3Title'), desc: t('pillar3Desc') },
   ];
 
   const builds = [
-    { emoji: '🤖', title: t('build1Title'), tools: t('build1Tools'), desc: t('build1Desc'), color: undefined },
-    { emoji: '🌐', title: t('build2Title'), tools: t('build2Tools'), desc: t('build2Desc'), color: 'lavender' as const },
-    { emoji: '⚙️', title: t('build3Title'), tools: t('build3Tools'), desc: t('build3Desc'), color: 'mint' as const },
-    { emoji: '📋', title: t('build4Title'), tools: t('build4Tools'), desc: t('build4Desc'), color: undefined },
+    { icon: Bot, title: t('build1Title'), tools: t('build1Tools'), desc: t('build1Desc'), color: undefined },
+    { icon: Globe2, title: t('build2Title'), tools: t('build2Tools'), desc: t('build2Desc'), color: 'lavender' as const },
+    { icon: Settings, title: t('build3Title'), tools: t('build3Tools'), desc: t('build3Desc'), color: 'mint' as const },
+    { icon: ClipboardList, title: t('build4Title'), tools: t('build4Tools'), desc: t('build4Desc'), color: undefined },
   ];
 
   const roles = [
@@ -73,10 +74,10 @@ export default async function AboutPage({ params }: { params: { locale: string }
   ];
 
   const languages = [
-    { flag: '🇵🇱', label: t('lang1') },
-    { flag: '🇬🇧', label: t('lang2') },
-    { flag: '🇳🇴', label: t('lang3') },
-    { flag: '🇪🇸', label: t('lang4') },
+    { code: 'PL', label: t('lang1') },
+    { code: 'EN', label: t('lang2') },
+    { code: 'NO', label: t('lang3') },
+    { code: 'ES', label: t('lang4') },
   ];
 
   return (
@@ -147,7 +148,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         {pillars.map((p, i) => (
           <BentoCard key={i} delay={0.1 + i * 0.08}>
-            <div className="text-2xl mb-2">{p.emoji}</div>
+            <div className="mb-3">
+              <p.icon size={22} strokeWidth={1.6} className="text-[#1A1A1A]" />
+            </div>
             <h4 className="font-bold mb-1 text-[#1A1A1A] text-sm leading-snug">{p.title}</h4>
             <p className="text-sm text-[#888] leading-snug">{p.desc}</p>
           </BentoCard>
@@ -169,7 +172,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         {builds.map((b, i) => (
           <BentoCard key={i} bgColor={b.color} delay={0.1 + i * 0.06}>
-            <div className="text-2xl mb-2">{b.emoji}</div>
+            <div className="mb-3">
+              <b.icon size={22} strokeWidth={1.6} className="text-[#1A1A1A]" />
+            </div>
             <h4 className="font-bold mb-0.5 text-sm text-[#1A1A1A]">{b.title}</h4>
             <p className="text-xs font-mono text-[#888] mb-2">{b.tools}</p>
             <p className="text-sm text-[#888] leading-relaxed">{b.desc}</p>
@@ -227,7 +232,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
         </BentoCard>
 
         <BentoCard bgColor="lavender" delay={0.25}>
-          <div className="text-3xl mb-3">📖</div>
+          <div className="mb-3">
+            <BookOpen size={22} strokeWidth={1.6} className="text-[#1A1A1A]" />
+          </div>
           <h4 className="font-bold text-base mb-2 text-[#1A1A1A]">{t('bookTitle')}</h4>
           <p className="text-sm text-[#1A1A1A]/80 leading-relaxed">{t('bookDesc')}</p>
         </BentoCard>
@@ -254,7 +261,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
           <div className="space-y-2.5">
             {languages.map((lang, i) => (
               <div key={i} className="flex items-center gap-2.5">
-                <span className="text-xl">{lang.flag}</span>
+                <span className="inline-flex items-center justify-center w-8 h-5 rounded text-[10px] font-bold tracking-wide bg-[#1A1A1A] text-white">
+                  {lang.code}
+                </span>
                 <span className="text-sm text-[#1A1A1A]">{lang.label}</span>
               </div>
             ))}
