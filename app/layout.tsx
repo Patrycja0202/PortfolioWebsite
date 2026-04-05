@@ -3,24 +3,34 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Analytica Studio – Patrycja Żurawska',
+    default: 'Analytica Studio – Konsultant AI | Wdrożenia Claude API | Polska',
     template: '%s | Analytica Studio',
   },
-  description: 'AI Product Builder & Consultant. I turn business processes into smart digital products — websites, automations, and AI-powered apps.',
+  description:
+    'Analytica Studio – AI Product Consulting dla firm. Praktyczne wdrożenia Claude API, automatyzacja procesów i produkty AI. Patrycja Żurawska, Kraków. Praca zdalna, klienci PL i międzynarodowi.',
   metadataBase: new URL('https://analytica-studio.com'),
+  alternates: {
+    canonical: 'https://analytica-studio.com',
+    languages: {
+      pl: 'https://analytica-studio.com/pl',
+      en: 'https://analytica-studio.com',
+      no: 'https://analytica-studio.com/no',
+    },
+  },
   openGraph: {
     type: 'website',
-    locale: 'en_GB',
-    alternateLocale: ['pl_PL', 'nb_NO'],
+    locale: 'pl_PL',
+    alternateLocale: ['en_GB', 'nb_NO'],
     siteName: 'Analytica Studio',
-    title: 'Analytica Studio – Patrycja Żurawska | AI Product Builder',
-    description: 'AI Product Builder & Consultant. Websites, automations, and AI-powered apps.',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Analytica Studio – AI Product Builder' }],
+    title: 'Analytica Studio – Konsultant AI | Wdrożenia Claude API',
+    description:
+      'Praktyczne wdrożenia AI dla firm. Nie PowerPoint – działające produkty. BA + PO + PM w jednej osobie.',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Analytica Studio – AI Product Consulting' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Analytica Studio – Patrycja Żurawska | AI Product Builder',
-    description: 'AI Product Builder & Consultant. Websites, automations, and AI-powered apps.',
+    title: 'Analytica Studio – Konsultant AI | Polska',
+    description: 'Praktyczne wdrożenia AI dla firm. Claude API, automatyzacja, produkty AI.',
     images: ['/opengraph-image'],
   },
   robots: {
@@ -28,7 +38,19 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
-  keywords: ['AI Product Builder', 'BPMN', 'Next.js', 'n8n', 'Make.com', 'Process Automation', 'Claude API', 'GPT-4', 'Analytica Studio', 'Patrycja Żurawska'],
+  keywords: [
+    'konsultant AI',
+    'wdrożenie AI dla firm',
+    'Claude API Polska',
+    'automatyzacja procesów AI',
+    'AI product consultant',
+    'BPMN',
+    'Next.js',
+    'n8n',
+    'Make.com',
+    'Analytica Studio',
+    'Patrycja Żurawska',
+  ],
 };
 
 const provider = { '@type': 'Person', name: 'Patrycja Żurawska', url: 'https://analytica-studio.com' };
@@ -39,10 +61,10 @@ const jsonLd = [
     '@type': ['Person', 'LocalBusiness'],
     name: 'Patrycja Żurawska',
     alternateName: 'Analytica Studio',
-    jobTitle: 'AI Product Builder & Consultant',
+    jobTitle: 'AI Product Consultant',
     url: 'https://analytica-studio.com',
     sameAs: [
-      'https://github.com/patrycjazurawska',
+      'https://github.com/Patrycja0202',
       'https://www.linkedin.com/in/patrycja-zurawska-businessanalyst/',
     ],
     knowsAbout: ['Claude API', 'AI Product Development', 'Business Analysis', 'Process Automation', 'n8n', 'Make.com', 'BPMN', 'Next.js', 'React'],
@@ -55,7 +77,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'AI Chatbot Development',
+    name: 'AI Chatbot i asystent biznesowy',
     provider,
     areaServed: 'Worldwide',
     url: 'https://analytica-studio.com/oferta',
@@ -63,7 +85,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Process Automation with n8n and Make.com',
+    name: 'Automatyzacja procesów – n8n i Make.com',
     provider,
     areaServed: 'Worldwide',
     url: 'https://analytica-studio.com/oferta',
@@ -71,7 +93,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'BPMN Process Analysis',
+    name: 'Analiza procesów BPMN',
     provider,
     areaServed: 'Worldwide',
     url: 'https://analytica-studio.com/oferta',
@@ -79,7 +101,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Next.js Website Development',
+    name: 'Strony internetowe Next.js',
     provider,
     areaServed: 'Worldwide',
     url: 'https://analytica-studio.com/oferta',
