@@ -2,20 +2,21 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
+const base = 'https://analytica-studio.com';
+const ogLocaleMap: Record<string, string> = { en: 'en_US', pl: 'pl_PL', no: 'nb_NO' };
+
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: 'offer' });
-  const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
+  const { locale } = params;
+  const canonical = locale === 'en' ? `${base}/oferta` : `${base}/${locale}/oferta`;
   return {
     title: t('metaTitle'),
     description: t('metaDesc'),
     alternates: {
-      canonical: `https://analyticastudio.pl${prefix}/oferta`,
-      languages: {
-        'en': 'https://analyticastudio.pl/oferta',
-        'pl': 'https://analyticastudio.pl/pl/oferta',
-        'no': 'https://analyticastudio.pl/no/oferta',
-      },
+      canonical,
+      languages: { en: `${base}/oferta`, pl: `${base}/pl/oferta`, no: `${base}/no/oferta` },
     },
+    openGraph: { title: t('metaTitle'), description: t('metaDesc'), url: canonical, locale: ogLocaleMap[locale] ?? 'en_US' },
   };
 }
 
@@ -78,9 +79,21 @@ function Bullet({ accent = '#C9B8F0' }: { accent?: string }) {
 
 export default async function OfferPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: 'offer' });
-  const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
+  const { locale } = params;
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  const homeUrl = locale === 'en' ? base : `${base}/${locale}`;
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'pl' ? 'Start' : locale === 'no' ? 'Hjem' : 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: locale === 'pl' ? 'Oferta' : locale === 'no' ? 'Tjenester' : 'Services', item: `${homeUrl}/oferta` },
+    ],
+  };
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
       {/* ── Page heading ── */}
@@ -270,5 +283,6 @@ export default async function OfferPage({ params }: { params: { locale: string }
       </div>
 
     </div>
+    </>
   );
 }

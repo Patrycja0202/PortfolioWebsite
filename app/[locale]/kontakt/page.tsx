@@ -5,27 +5,62 @@ import { Suspense } from 'react';
 import BentoCard from '@/components/BentoCard';
 import ContactForm from '@/components/ContactForm';
 
+const base = 'https://analytica-studio.com';
+
+const contactMeta = {
+  en: {
+    title: 'Contact | Book a Free 30-Min Call with Patrycja – Analytica Studio',
+    description: 'Get in touch with Patrycja Żurawska — book a free 30-minute call about your AI project, automation, or website. No commitment required.',
+    ogLocale: 'en_US',
+  },
+  pl: {
+    title: 'Kontakt | Umów bezpłatną rozmowę z Patrycją – Analytica Studio',
+    description: 'Skontaktuj się z Patrycją Żurawską — umów bezpłatną 30-minutową rozmowę o projekcie AI, automatyzacji lub stronie internetowej. Bez zobowiązań.',
+    ogLocale: 'pl_PL',
+  },
+  no: {
+    title: 'Kontakt | Bestill gratis samtale med Patrycja – Analytica Studio',
+    description: 'Ta kontakt med Patrycja Żurawska — bestill en gratis 30-minutters samtale om AI-prosjektet, automatiseringen eller nettsiden din. Ingen forpliktelser.',
+    ogLocale: 'nb_NO',
+  },
+};
+
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: 'contact' });
-  const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
+  const locale = params.locale as keyof typeof contactMeta;
+  const m = contactMeta[locale] ?? contactMeta.en;
+  const canonical = locale === 'en' ? `${base}/kontakt` : `${base}/${locale}/kontakt`;
+
   return {
-    title: t('metaTitle'),
-    description: t('metaDesc'),
+    title: m.title,
+    description: m.description,
     alternates: {
-      canonical: `https://analyticastudio.pl${prefix}/kontakt`,
+      canonical,
       languages: {
-        'en': 'https://analyticastudio.pl/kontakt',
-        'pl': 'https://analyticastudio.pl/pl/kontakt',
-        'no': 'https://analyticastudio.pl/no/kontakt',
+        en: `${base}/kontakt`,
+        pl: `${base}/pl/kontakt`,
+        no: `${base}/no/kontakt`,
       },
     },
+    openGraph: { title: m.title, description: m.description, url: canonical, locale: m.ogLocale },
   };
 }
 
 export default async function ContactPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: 'contact' });
+  const { locale } = params;
+  const homeUrl = locale === 'en' ? base : `${base}/${locale}`;
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'pl' ? 'Start' : locale === 'no' ? 'Hjem' : 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: locale === 'pl' ? 'Kontakt' : locale === 'no' ? 'Kontakt' : 'Contact', item: `${homeUrl}/kontakt` },
+    ],
+  };
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2
         className="mb-4 text-center"
@@ -48,7 +83,7 @@ export default async function ContactPage({ params }: { params: { locale: string
 
           <div className="space-y-4">
             <a
-              href="mailto:patrycjazurawska@hotmail.com"
+              href="mailto:patrycja.analytica@gmail.com"
               className="flex items-center gap-3 p-4 rounded-xl hover:bg-[#F5F2EE] transition-colors group"
             >
               <div className="w-10 h-10 rounded-full bg-[#C9B8F0] flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -56,7 +91,7 @@ export default async function ContactPage({ params }: { params: { locale: string
               </div>
               <div>
                 <p className="text-sm font-medium text-[#888]">Email</p>
-                <p className="font-medium text-[#1A1A1A]">patrycjazurawska@hotmail.com</p>
+                <p className="font-medium text-[#1A1A1A]">patrycja.analytica@gmail.com</p>
               </div>
             </a>
 
@@ -114,5 +149,6 @@ export default async function ContactPage({ params }: { params: { locale: string
         </div>
       </div>
     </div>
+    </>
   );
 }

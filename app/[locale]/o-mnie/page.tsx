@@ -5,20 +5,21 @@ import Link from 'next/link';
 import { Brain, Bot, Globe, Globe2, Settings, ClipboardList, BookOpen } from 'lucide-react';
 import BentoCard from '@/components/BentoCard';
 
+const base = 'https://analytica-studio.com';
+const ogLocaleMap: Record<string, string> = { en: 'en_US', pl: 'pl_PL', no: 'nb_NO' };
+
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: 'about' });
-  const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
+  const { locale } = params;
+  const canonical = locale === 'en' ? `${base}/o-mnie` : `${base}/${locale}/o-mnie`;
   return {
     title: t('metaTitle'),
     description: t('metaDesc'),
     alternates: {
-      canonical: `https://analyticastudio.pl${prefix}/o-mnie`,
-      languages: {
-        'en': 'https://analyticastudio.pl/o-mnie',
-        'pl': 'https://analyticastudio.pl/pl/o-mnie',
-        'no': 'https://analyticastudio.pl/no/o-mnie',
-      },
+      canonical,
+      languages: { en: `${base}/o-mnie`, pl: `${base}/pl/o-mnie`, no: `${base}/no/o-mnie` },
     },
+    openGraph: { title: t('metaTitle'), description: t('metaDesc'), url: canonical, locale: ogLocaleMap[locale] ?? 'en_US' },
   };
 }
 
@@ -47,7 +48,17 @@ const skills = [
 
 export default async function AboutPage({ params }: { params: { locale: string } }) {
   const t = await getTranslations({ locale: params.locale, namespace: 'about' });
-  const prefix = params.locale === 'en' ? '' : `/${params.locale}`;
+  const { locale } = params;
+  const prefix = locale === 'en' ? '' : `/${locale}`;
+  const homeUrl = locale === 'en' ? base : `${base}/${locale}`;
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'pl' ? 'Start' : locale === 'no' ? 'Hjem' : 'Home', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: locale === 'pl' ? 'O mnie' : locale === 'no' ? 'Om meg' : 'About', item: `${homeUrl}/o-mnie` },
+    ],
+  };
 
   const pillars = [
     { icon: Brain, title: t('pillar1Title'), desc: t('pillar1Desc') },
@@ -82,6 +93,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
   ];
 
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Page title */}
       <h2
@@ -295,5 +308,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
         ))}
       </div>
     </div>
+    </>
   );
 }

@@ -3,6 +3,6 @@ import { MetadataRoute } from 'next';
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: '*', allow: '/' },
-    sitemap: 'https://analytica-studio.com/sitemap.xml',
+    sitemap: 'https://www.analytica-studio.com/sitemap.xml',
   };
 }
