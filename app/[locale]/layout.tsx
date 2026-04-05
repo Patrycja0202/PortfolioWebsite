@@ -8,6 +8,33 @@ import Footer from '@/components/Footer';
 const locales = ['pl', 'no', 'en'];
 const baseUrl = 'https://analytica-studio.com';
 
+const provider = { '@type': 'Person', name: 'Patrycja Żurawska', url: baseUrl };
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': ['Person', 'LocalBusiness'],
+    name: 'Patrycja Żurawska',
+    alternateName: 'Analytica Studio',
+    jobTitle: 'AI Product Consultant',
+    url: baseUrl,
+    sameAs: [
+      'https://github.com/Patrycja0202',
+      'https://www.linkedin.com/in/patrycja-zurawska-businessanalyst/',
+    ],
+    knowsAbout: ['Claude API', 'AI Product Development', 'Business Analysis', 'Process Automation', 'n8n', 'Make.com', 'BPMN', 'Next.js', 'React'],
+    address: { '@type': 'PostalAddress', addressLocality: 'Kraków', addressCountry: 'PL' },
+    areaServed: 'Worldwide',
+    priceRange: 'PLN 2500 – PLN 10000+',
+    email: 'patrycjazurawska@hotmail.com',
+    image: `${baseUrl}/og-image.png`,
+  },
+  { '@context': 'https://schema.org', '@type': 'Service', name: 'AI Chatbot i asystent biznesowy', provider, areaServed: 'Worldwide', url: `${baseUrl}/oferta` },
+  { '@context': 'https://schema.org', '@type': 'Service', name: 'Automatyzacja procesów – n8n i Make.com', provider, areaServed: 'Worldwide', url: `${baseUrl}/oferta` },
+  { '@context': 'https://schema.org', '@type': 'Service', name: 'Analiza procesów BPMN', provider, areaServed: 'Worldwide', url: `${baseUrl}/oferta` },
+  { '@context': 'https://schema.org', '@type': 'Service', name: 'Strony internetowe Next.js', provider, areaServed: 'Worldwide', url: `${baseUrl}/oferta` },
+];
+
 type LocaleMeta = {
   title: string;
   description: string;
@@ -115,6 +142,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className="min-h-screen" style={{ backgroundColor: '#F5F2EE' }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="pt-20">{children}</main>
